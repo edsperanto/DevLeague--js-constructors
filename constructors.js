@@ -143,6 +143,8 @@ function Spellcaster(name, health, mana) {
       if(this.mana >= spell.cost) {
         this.spendMana(spell.cost);
         return true;
+      }else{
+        return false;
       }
       return true;
     }else if(spell instanceof DamageSpell) {
