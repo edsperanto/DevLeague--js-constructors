@@ -23,8 +23,7 @@ function Spell(name, cost, description) {
   this.cost = cost;
   this.description = description;
   this.getDetails = function() {
-    let tempStr = name + " " + cost + " " + description;
-    return tempStr;
+    return (name + " " + cost + " " + description);
   };
 }
 
@@ -52,7 +51,11 @@ function Spell(name, cost, description) {
  * @property {number} damage
  * @property {string} description
  */
-
+function DamageSpell(name, cost, damage, description) {
+  Spell.call(this, name, cost, description);
+  this.damage = damage;
+}
+DamageSpell.prototype = Object.create(Spell.prototype);
 /**
  * Now that you've created some spells, let's create
  * `Spellcaster` objects that can use them!
