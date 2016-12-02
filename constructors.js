@@ -88,12 +88,10 @@ function Spellcaster(name, health, mana) {
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
   this.inflictDamage = function(damage) {
-    if(this.health - damage >= 0) {
+    if(this.health - damage > 0) {
       this.health -= damage;
     }else{
       this.health = 0;
-    }
-    if(this.health === 0) {
       this.isAlive = false;
     }
   };
