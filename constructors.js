@@ -139,8 +139,12 @@ function Spellcaster(name, health, mana) {
    */
   this.invoke = function(spell, target) {
     if(spell instanceof DamageSpell && target instanceof Spellcaster) {
-      target.inflictDamage(spell.damage);
-      this.spendMana(spell.cost);
+      if(this.mana > spell.cost) {
+        target.inflictDamage(spell.damage);
+        this.spendMana(spell.cost);
+      }else{
+        return false;
+      }
       return true;
     }else if(spell instanceof Spell){
       // stop returning true when spell is damagespell
