@@ -137,4 +137,13 @@ function Spellcaster(name, health, mana) {
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+  this.invoke = function(spell, target) {
+    if(spell instanceof Spell) {
+      return true;
+    }else if(spell instanceof DamageSpell) {
+      return true;
+    }else{
+      return false;
+    }
+  };
 }
