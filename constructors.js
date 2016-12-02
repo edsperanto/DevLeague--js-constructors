@@ -90,6 +90,8 @@ function Spellcaster(name, health, mana) {
   this.inflictDamage = function(damage) {
     if(this.health - damage >= 0) {
       this.health -= damage;
+    }else{
+      this.health = 0;
     }
     if(this.health === 0) {
       this.isAlive = false;
