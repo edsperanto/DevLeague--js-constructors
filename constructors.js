@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /**
  * Creates a generic spell that can be cast.
  *
@@ -10,7 +11,7 @@
  * @property {string} description
  * @method   getDetails
  */
-
+function Spell(name, cost, description) {
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -18,6 +19,14 @@
    * @name getDetails
    * @return {string} details containing all of the spells information.
    */
+  this.name = name;
+  this.cost = cost;
+  this.description = description;
+  this.getDetails = function() {
+    let tempStr = name + " " + cost + " " + description;
+    return tempStr;
+  };
+}
 
 /**
  * A spell that deals damage.
