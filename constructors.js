@@ -107,7 +107,6 @@ function Spellcaster(name, health, mana) {
   this.spendMana = function(cost) {
     if(this.mana - cost >= 0) {
       this.mana -= cost;
-      console.log("new mana", this.mana);
       return true;
     }
     return false;
@@ -139,15 +138,19 @@ function Spellcaster(name, health, mana) {
    * @return {boolean}                    Whether the spell was successfully cast.
    */
   this.invoke = function(spell, target) {
-    if(spell instanceof Spell) {
+    if(spell instanceof DamageSpell && target instanceof Spellcaster) {
+      target.inflictDamage(spell.damage);
+      return true;
+    }else if(spell instanceof Spell){
+      // stop returning true when spell is damagespell
+      if(spell instanceof DamageSpell) { return false; }
+      // if not damagespell...
       if(this.mana >= spell.cost) {
         this.spendMana(spell.cost);
         return true;
       }else{
         return false;
       }
-      return true;
-    }else if(spell instanceof DamageSpell) {
       return true;
     }else{
       return false;
