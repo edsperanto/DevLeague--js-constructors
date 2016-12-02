@@ -72,7 +72,7 @@ DamageSpell.prototype = Object.create(Spell.prototype);
  * @method  spendMana
  * @method  invoke
  */
-
+function Spellcaster(name, health, mana) {
   /**
    * @method inflictDamage
    *
@@ -120,3 +120,4 @@ DamageSpell.prototype = Object.create(Spell.prototype);
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+}
