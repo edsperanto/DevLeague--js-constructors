@@ -107,6 +107,7 @@ function Spellcaster(name, health, mana) {
   this.spendMana = function(cost) {
     if(this.mana - cost >= 0) {
       this.mana -= cost;
+      console.log("new mana", this.mana);
       return true;
     }
     return false;
@@ -139,6 +140,10 @@ function Spellcaster(name, health, mana) {
    */
   this.invoke = function(spell, target) {
     if(spell instanceof Spell) {
+      if(this.mana >= spell.cost) {
+        this.spendMana(spell.cost);
+        return true;
+      }
       return true;
     }else if(spell instanceof DamageSpell) {
       return true;
